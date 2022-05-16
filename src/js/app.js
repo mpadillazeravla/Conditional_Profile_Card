@@ -30,17 +30,32 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
+  // el ? variables.name : "nombre" despues de variables.name lo que hace es que si no hay nada escrito, rellena con nombre. Si hay algo en variables.name, pone
+  // ese valor de variables.name en la propia name
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name} ${variables.lastname}</h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city}, ${variables.country}</h3>
+          <h1>${variables.name ? variables.name : "Nombre"} ${
+    variables.lastname ? variables.lastname : "Apellido"
+  }</h1>  
+  
+          <h2>${variables.role ? variables.role : "Role"}</h2>
+          <h3>${variables.city ? variables.city : "City"}, ${
+    variables.country ? variables.country : "Country"
+  }</h3>
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="https://twitter.com/${variables.twitter}"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/${variables.github}"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/in/${variables.linkedin}"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/${variables.instagram}"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://twitter.com/${
+              variables.twitter
+            }"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${
+              variables.github
+            }"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/${
+              variables.linkedin
+            }"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${
+              variables.instagram
+            }"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -64,7 +79,7 @@ window.onload = function() {
     github: "#",
     linkedin: "#",
     instagram: "#",
-    name: "Nombre",
+    name: null,
     lastname: "Apellido",
     role: "Role",
     country: "Country",
